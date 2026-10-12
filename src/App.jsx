@@ -82,6 +82,7 @@ function parseTrainMapJson(value) {
       ? value.stations.map((station, index) => ({
           id: `station-${station?.id ?? index}`,
           name: station?.name ?? station?.id ?? `駅 ${index + 1}`,
+          code: station?.code,
           position: station?.coord,
           kind: "station",
         }))
@@ -273,8 +274,14 @@ function App() {
                     weight: 2,
                   }}
                 >
-                  <Tooltip>{point.name}</Tooltip>
-                  <Popup>{point.name}</Popup>
+                  <Tooltip>
+                    {point.name}
+                    {point.kind === "station" && point.code ? ` (${point.code})` : ""}
+                  </Tooltip>
+                  <Popup>
+                    {point.name}
+                    {point.kind === "station" && point.code ? ` (${point.code})` : ""}
+                  </Popup>
                 </CircleMarker>
               ))}
             </MapContainer>
