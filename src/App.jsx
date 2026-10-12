@@ -265,7 +265,7 @@ function App() {
                 <CircleMarker
                   key={point.id}
                   center={point.position}
-                  radius={point.kind === "station" ? 5 : 6}
+                  radius={6}
                   pathOptions={{
                     color: point.kind === "station" ? "#e27645" : "#526a8a",
                     fillColor: "#fff",
